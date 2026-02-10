@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="jakpat-web_icon.png">
+    <title>jakpat</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --glass-bg: rgba(8, 8, 12, 0.94);
+            --border-color: rgba(150, 100, 255, 0.15);
+            --dynamic-gutter: clamp(20px, 8vw, 100px);
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #030305; }
+        ::-webkit-scrollbar-thumb { background: rgba(150, 100, 255, 0.3); border-radius: 10px; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #030305;
+            font-family: 'Outfit', sans-serif;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8vh var(--dynamic-gutter); 
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .bg-animate {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(45deg, #050505, #1a0a2e); 
+            background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('jakpat-logo_out12.png');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            animation: slowPulse 25s infinite ease-in-out;
+        }
+
+        @keyframes slowPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+
+        header { text-align: center; margin-bottom: 4vh; max-width: 500px; }
+        .name { 
+    font-size: clamp(3.5rem, 12vw, 6rem); 
+    font-weight: 900; 
+    letter-spacing: -3px;
+    background: linear-gradient(to bottom, #ffffff 30%, #a855f7 100%);
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+    -webkit-text-fill-color: transparent;
+
+    line-height: 1.2;
+    padding-bottom: 10px;
+    display: block;
+
+    filter: drop-shadow(0 10px 20px rgba(168, 85, 247, 0.2));
+}
+        
+        /* The Description Block */
+        .bio {
+    font-size: clamp(1rem, 3vw, 1.15rem);
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 20px auto;
+    max-width: 460px;
+}
+
+        #clock { 
+            font-size: 1.1rem; 
+            font-weight: 600; 
+            letter-spacing: 3px; 
+            color: #d6b4ff; 
+            text-transform: uppercase;
+        }
+
+        .links-container {
+            width: 100%;
+            max-width: 500px; 
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .btn-block {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 22px;
+            padding: 18px 25px;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            position: relative;
+            gap: 20px; 
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .btn-block::after {
+            content: "\f08e";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            right: 25px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .btn-block:hover {
+            transform: translateY(-4px) scale(1.02);
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+            padding-right: 45px;
+        }
+
+        .btn-block:hover::after { opacity: 0.6; transform: translateX(0); }
+
+        /* Brand Glows */
+        .btn-stream:hover { box-shadow: 0 15px 35px rgba(255, 62, 62, 0.25); }
+        .btn-mc:hover { box-shadow: 0 15px 35px rgba(79, 172, 254, 0.25); }
+        .btn-yt:hover { box-shadow: 0 15px 35px rgba(255, 0, 0, 0.25); }
+        .btn-twitch:hover { box-shadow: 0 15px 35px rgba(145, 70, 255, 0.25); }
+        .btn-discord:hover { box-shadow: 0 15px 35px rgba(88, 101, 242, 0.25); }
+        .btn-bl:hover { box-shadow: 0 15px 35px rgba(255, 215, 0, 0.25); }
+
+        .logo-box {
+            width: 52px; height: 52px;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            flex-shrink: 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-box img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+        .logo-box i { font-size: 1.5rem; }
+
+        .btn-text { font-size: 1.25rem; font-weight: 800; }
+
+        .discord-container {
+            margin-top: 30px;
+            width: 100%;
+            max-width: 500px;
+            background: rgba(0,0,0,0.8);
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            min-height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-animate"></div>
+
+    <header>
+        <h1 class="name">jakpat</h1>
+        <p class="bio">A lone wolf from Slovakia, creating high-energy gaming content for a global 
+    English audience. I’m all about the chaos of the grind and the fun of the 
+    community, balanced by a serious drive for coding and development. 
+    Whether I'm leading the <b>jakpat-MC</b> universe or building my next 
+    technical project, I’m here to push limits and keep it goofy. 
+    Welcome to the pack.</p>
+        <div id="clock">00:00:00 CET</div>
+    </header>
+
+    <div class="links-container">
+        <a href="http://jakpat-stream.duckdns.org/" class="btn-block btn-stream" target="_blank" rel="noopener noreferrer">
+            <div class="logo-box"><i class="fa-solid fa-play" style="color: #ff3e3e;"></i></div>
+            <span class="btn-text">Stream Platform</span>
+        </a>
+        <a href="http://jakpat-mc-web.duckdns.org/" class="btn-block btn-mc" target="_blank" rel="noopener noreferrer">
+            <div class="logo-box"><img src="jakpat-MC_Logo.png" alt="MC"></div>
+            <span class="btn-text">jakpat-MC</span>
+        </a>
+        <a href="https://www.youtube.com/channel/UC4ZteXyAdu5yokP9okDTO8w" class="btn-block btn-yt" target="_blank" rel="noopener noreferrer">
+            <div class="logo-box"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i></div>
+            <span class="btn-text">YouTube</span>
+        </a>
+        <a href="https://www.twitch.tv/jakpat_" class="btn-block btn-twitch" target="_blank" rel="noopener noreferrer">
+            <div class="logo-box"><i class="fa-brands fa-twitch" style="color: #9146ff;"></i></div>
+            <span class="btn-text">Twitch</span>
+        </a>
+        <a href="https://discord.gg/279n7TNKvr" class="btn-block btn-discord" target="_blank" rel="noopener noreferrer">
+            <div class="logo-box"><i class="fa-brands fa-discord" style="color: #5865f2;"></i></div>
+            <span class="btn-text">Discord</span>
+        </a>
+        <a href="https://beatleader.com/u/76561199068539029" class="btn-block btn-bl" target="_blank" rel="noopener noreferrer">
+            <div class="logo-box"><i class="fa-solid fa-bolt" style="color: #ffd700;"></i></div>
+            <span class="btn-text">BeatLeader</span>
+        </a>
+    </div>
+
+    <div class="discord-container">
+        <a href="https://discord.com/users/778968815698575360" target="_blank" rel="noopener noreferrer">
+            <img src="https://lanyard.cnrad.dev/api/778968815698575360?bg=transparent&animated=true" style="width: 100%; display: block;" alt="Status">
+        </a>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const options = {
+                timeZone: 'Europe/Bratislava',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            };
+            
+            const timePart = new Intl.DateTimeFormat('en-GB', options).format(now);
+            
+            // Logic to determine if it's CET or CEST
+            const isDST = now.toLocaleString('en-GB', { timeZone: 'Europe/Bratislava', timeZoneName: 'short' }).includes('BST') || 
+                          now.toLocaleString('en-GB', { timeZone: 'Europe/Bratislava', timeZoneName: 'short' }).includes('GMT+2') ||
+                          now.toLocaleString('en-GB', { timeZone: 'Europe/Bratislava', timeZoneName: 'short' }).includes('CEST');
+            
+            const tzLabel = isDST ? "CEST" : "CET";
+            
+            document.getElementById('clock').innerHTML = `${timePart} ${tzLabel}`;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+
+</body>
+</html>
