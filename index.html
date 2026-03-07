@@ -72,16 +72,21 @@
         
         /* The Description Block */
         .bio {
-    font-size: clamp(1rem, 3vw, 1.15rem);
+    font-size: clamp(1.3rem, 3vw, 1.15rem);
     font-weight: 300;
-    line-height: 1.6;
+    line-height: 1.3;
     color: rgba(255, 255, 255, 0.85);
-    margin: 20px auto;
-    max-width: 460px;
+    margin: 25px auto;
+    max-width: 480px;
+}
+
+.bio b {
+    color: #fff;
+    font-weight: 540;
 }
 
         #clock { 
-            font-size: 1.1rem; 
+            font-size: 1.3rem; 
             font-weight: 600; 
             letter-spacing: 3px; 
             color: #d6b4ff; 
@@ -174,15 +179,18 @@
     <div class="bg-animate"></div>
 
     <header>
-        <h1 class="name">jakpat</h1>
-        <p class="bio">A lone wolf from Slovakia, creating high-energy gaming content for a global 
-    English audience. I’m all about the chaos of the grind and the fun of the 
-    community, balanced by a serious drive for coding and development. 
-    Whether I'm leading the <b>jakpat-MC</b> universe or building my next 
-    technical project, I’m here to push limits and keep it goofy. 
-    Welcome to the pack.</p>
-        <div id="clock">00:00:00 CET</div>
-    </header>
+    <h1 class="name">jakpat</h1>
+    <p style="color: #b388ff; font-weight: 800; font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;">
+    Gaming • Development • Servers
+</p>
+    <p class="bio">
+    Creating high-energy gaming content for a global audience while 
+    developing modern tools behind the scenes. From building 
+    web-based platforms like <b>CipherShare</b> to managing community 
+    services, I’m focused on the intersection of gaming and code.
+</p>
+    <div id="clock">00:00:00 CET</div>
+</header>
 
     <div class="links-container">
         <a href="https://ciphershare.jakpat.dev/" class="btn-block btn-ciphershare" target="_blank" rel="noopener noreferrer">
@@ -254,10 +262,5 @@
         setInterval(updateTime, 1000);
         updateTime();
     </script>
-
 </body>
-
 </html>
-
-
-
